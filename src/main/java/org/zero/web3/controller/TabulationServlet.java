@@ -3,7 +3,6 @@ package org.zero.web3.controller;
 import java.io.*;
 
 import jakarta.enterprise.context.ApplicationScoped;
-import jakarta.inject.Inject;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
@@ -11,7 +10,7 @@ import org.zero.web3.utils.Calculator;
 
 @ApplicationScoped
 @WebServlet("/hello")
-public class HelloServlet extends HttpServlet {
+public class TabulationServlet extends HttpServlet {
     private Calculator calculator;
     @Override
     public void init() throws ServletException {
@@ -21,7 +20,7 @@ public class HelloServlet extends HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 
 
-        request.setAttribute("result", calculator.calculate(5.0));
+        request.setAttribute("result", calculator.apply(5.0));
 
         request.getRequestDispatcher("/WEB-INF/index.jsp").forward(request, response);
     }
