@@ -26,16 +26,25 @@ public class TabulationService {
                 .mapToObj(element -> new Result(element, calculator.apply(element)))
                 .toList();
     }
+    // 0.00196243 + 0.957825 + 0.916291 + 1.09861
 
-    public Result getMax(List<Result> results) {
+    public static Result getMax(List<Result> results) {
         return results.stream().sorted(Comparator.comparingDouble(Result::getX)).toList().getLast();
     }
 
-    public Result getMin(List<Result> results) {
+    public static Result getMin(List<Result> results) {
         return results.stream().sorted(Comparator.comparingDouble(Result::getX)).toList().getFirst();
     }
 
+    public static Double getSum(List<Result> results) {
+        return results.stream().mapToDouble(Result::getY).sum();
+    }
+
+    public static Double getAvg(List<Result> results) {
+        return getSum(results) / results.size();
+    }
+
     private Integer getIterations() {
-        return (int) Math.round((this.end - this.start) / this.step);
+        return (int) Math.round((this.end - this.start) / this.step) + 1;
     }
 }
