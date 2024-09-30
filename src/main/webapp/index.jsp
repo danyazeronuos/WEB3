@@ -1,4 +1,3 @@
-<jsp:useBean id="result" scope="request" type="java.lang.Double"/>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html>
@@ -6,6 +5,6 @@
     <title>JSP - Hello World</title>
 </head>
 <body>
-<p>Result: ${result}</p>
+<p>Result: </p>
 </body>
 </html>

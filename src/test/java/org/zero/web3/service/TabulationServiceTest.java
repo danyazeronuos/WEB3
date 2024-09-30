@@ -24,7 +24,19 @@ class TabulationServiceTest {
     }
     @Test
     public void tabulationServiceTest_3() {
-        var expected = 1.09861;
-        Assertions.assertEquals(expected, actual.get(300).getY(), epsilon);
+        var expected = 1.09694423;
+        Assertions.assertEquals(expected, actual.getLast().getY(), epsilon);
+    }
+
+    @Test
+    public void tabulationServiceTest_ResultWithMaxYValue() {
+        var expected = 1.09694423;
+        Assertions.assertEquals(expected, tabulationService.getMax(actual).getY(), epsilon);
+    }
+
+    @Test
+    public void tabulationServiceTest_ResultWithMinYValue() {
+        var expected = 0.00196242877;
+        Assertions.assertEquals(expected, tabulationService.getMin(actual).getY(), epsilon);
     }
 }
