@@ -12,16 +12,21 @@ import org.zero.web3.service.TabulationService;
 @WebServlet("/tabulate")
 public class TabulationServlet extends HttpServlet {
 
-    public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+    public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 
-        var start = 0.5;
-        var end = 2.0;
-        var step = 0.005;
+        var start = Double.parseDouble(request.getParameter("start"));
+        var end = Double.parseDouble(request.getParameter("finish"));
+        var step = Double.parseDouble(request.getParameter("step"));
 
         var service = new TabulationService(start, end, step);
 
         List<Result> tabulate = service.tabulate();
         request.setAttribute("result", tabulate);
+        request.setAttribute("sum", TabulationService.getSum(tabulate));
+        request.setAttribute("min", TabulationService.getMin(tabulate));
+        request.setAttribute("max", TabulationService.getMax(tabulate));
+        request.setAttribute("avg", TabulationService.getAvg(tabulate));
+
         request.setAttribute("start", start);
         request.setAttribute("finish", end);
         request.setAttribute("step", step);
