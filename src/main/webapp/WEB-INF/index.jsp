@@ -23,6 +23,11 @@
     th, td {
         padding: 5px;
     }
+    body {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+    }
 </style>
 
 <table>
@@ -41,40 +46,25 @@
     <tr>
         <th>Max</th>
         <th>Min</th>
-        <th>Sum</th>
+    </tr>
+    <tr>
+        <td><%=String.format("%.8f", ((Result) request.getAttribute("max")).getX())%></td>
+        <td><%=String.format("%.8f", ((Result) request.getAttribute("min")).getX())%></td>
+    </tr>
+    <tr>
+        <td><%=String.format("%.8f", ((Result) request.getAttribute("max")).getY())%></td>
+        <td><%=String.format("%.8f", ((Result) request.getAttribute("min")).getY())%></td>
+    </tr>
+</table>
+<table>
+    <tr>
+        <th style="width: 50%">Sum</th>
         <th>Avg</th>
     </tr>
     <tr>
-        <td>${max.x}</td>
-        <td>${min.x}</td>
-        <td>${sum}</td>
-        <td>${avg}</td>
+        <td><%=String.format("%.8f", ((Double) request.getAttribute("sum")))%></td>
+        <td><%=String.format("%.8f", ((Double) request.getAttribute("avg")))%></td>
     </tr>
-    <tr>
-        <td>${max.y}</td>
-        <td>${min.y}</td>
-    </tr>
-</table>
-<table style="border: 1px solid black">
-    <tr>
-        <th>ID</th>
-        <th>X</th>
-        <th>Y</th>
-    </tr>
-    <%
-        List<Result> list = (List<Result>) request.getAttribute("result");
-        for (var i = 0; i < list.size(); i++) {
-    %>
-    <tr>
-        <td><%= i%></td>
-        <td><%= String.format("%.2f", list.get(i).getX())%>
-        </td>
-        <td><%= String.format("%.8f", list.get(i).getY())%>
-        </td>
-    </tr>
-    <%
-        }
-    %>
 </table>
 </body>
 </html>
