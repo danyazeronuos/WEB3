@@ -6,7 +6,9 @@ import java.util.List;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
+import org.zero.web3.model.Data;
 import org.zero.web3.model.Result;
+import org.zero.web3.model.ResultModel;
 import org.zero.web3.service.TabulationService;
 
 @WebServlet("/tabulate")
@@ -21,19 +23,16 @@ public class TabulationServlet extends HttpServlet {
         var service = new TabulationService(start, end, step);
 
         List<Result> tabulate = service.tabulate();
-        for (Result r : tabulate) {
-            System.out.println(r);
-        }
         request.setAttribute("result", tabulate);
-        request.setAttribute("sum", TabulationService.getSum(tabulate));
-        request.setAttribute("min", TabulationService.getMin(tabulate));
-        request.setAttribute("max", TabulationService.getMax(tabulate));
-        request.setAttribute("avg", TabulationService.getAvg(tabulate));
+        var enteredData = new Data(start, end, step);
+        var data = new ResultModel(TabulationService.getSum(tabulate),
+                TabulationService.getMin(tabulate),
+                TabulationService.getMax(tabulate),
+                TabulationService.getAvg(tabulate),
+                enteredData);
 
-        request.setAttribute("start", start);
-        request.setAttribute("finish", end);
-        request.setAttribute("step", step);
 
+        request.setAttribute("data", data);
         request.getRequestDispatcher("/WEB-INF/index.jsp").forward(request, response);
     }
 

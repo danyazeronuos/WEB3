@@ -1,12 +1,4 @@
-<jsp:useBean id="max" scope="request" type="org.zero.web3.model.Result"/>
-<jsp:useBean id="min" scope="request" type="org.zero.web3.model.Result"/>
-<jsp:useBean id="sum" scope="request" type="java.lang.Double"/>
-<jsp:useBean id="avg" scope="request" type="java.lang.Double"/>
-<jsp:useBean id="step" scope="request" type="java.lang.Double"/>
-<jsp:useBean id="finish" scope="request" type="java.lang.Double"/>
-<jsp:useBean id="start" scope="request" type="java.lang.Double"/>
-<%@ page import="java.util.List" %>
-<%@ page import="org.zero.web3.model.Result" %>
+<%@ page import="org.zero.web3.model.ResultModel" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html>
@@ -37,9 +29,9 @@
         <th>Step</th>
     </tr>
     <tr>
-        <td>${start}</td>
-        <td>${finish}</td>
-        <td>${step}</td>
+        <td><%= ((ResultModel) request.getAttribute("data")).data().start()%></td>
+        <td><%= ((ResultModel) request.getAttribute("data")).data().finish()%></td>
+        <td><%= ((ResultModel) request.getAttribute("data")).data().step()%></td>
     </tr>
 </table>
 <table>
@@ -48,12 +40,12 @@
         <th>Min</th>
     </tr>
     <tr>
-        <td><%=String.format("%.8f", ((Result) request.getAttribute("max")).getX())%></td>
-        <td><%=String.format("%.8f", ((Result) request.getAttribute("min")).getX())%></td>
+        <td><%=String.format("%.8f", ((ResultModel) request.getAttribute("data")).max().getX())%></td>
+        <td><%=String.format("%.8f", ((ResultModel) request.getAttribute("data")).min().getX())%></td>
     </tr>
     <tr>
-        <td><%=String.format("%.8f", ((Result) request.getAttribute("max")).getY())%></td>
-        <td><%=String.format("%.8f", ((Result) request.getAttribute("min")).getY())%></td>
+        <td><%=String.format("%.8f", ((ResultModel) request.getAttribute("data")).max().getY())%></td>
+        <td><%=String.format("%.8f", ((ResultModel) request.getAttribute("data")).min().getY())%></td>
     </tr>
 </table>
 <table>
@@ -62,8 +54,8 @@
         <th>Avg</th>
     </tr>
     <tr>
-        <td><%=String.format("%.8f", ((Double) request.getAttribute("sum")))%></td>
-        <td><%=String.format("%.8f", ((Double) request.getAttribute("avg")))%></td>
+        <td><%=String.format("%.8f", ((ResultModel) request.getAttribute("data")).sum())%></td>
+        <td><%=String.format("%.8f", ((ResultModel) request.getAttribute("data")).avg())%></td>
     </tr>
 </table>
 </body>
