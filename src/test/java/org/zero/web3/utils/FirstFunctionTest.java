@@ -17,7 +17,7 @@ class FirstFunctionTest {
     }
     @Test
     void firstFunctionTest_1() {
-        var expected = 1.79176;
+        var expected = 0.77815;
         var actual = firstFunction.apply(5.0);
 
         Assertions.assertEquals(expected, actual, epsilon);
@@ -26,7 +26,7 @@ class FirstFunctionTest {
 
     @Test
     void firstFunctionTest_2() {
-        var expected = 2.48491;
+        var expected = 1.07918;
         var actual = firstFunction.apply(11.0);
 
         Assertions.assertEquals(expected, actual, epsilon);

@@ -21,6 +21,9 @@ public class TabulationServlet extends HttpServlet {
         var service = new TabulationService(start, end, step);
 
         List<Result> tabulate = service.tabulate();
+        for (Result r : tabulate) {
+            System.out.println(r);
+        }
         request.setAttribute("result", tabulate);
         request.setAttribute("sum", TabulationService.getSum(tabulate));
         request.setAttribute("min", TabulationService.getMin(tabulate));

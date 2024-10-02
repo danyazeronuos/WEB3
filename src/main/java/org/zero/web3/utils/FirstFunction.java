@@ -5,6 +5,6 @@ import java.util.function.Function;
 public class FirstFunction implements Function<Double, Double> {
     @Override
     public Double apply(Double x) {
-        return Math.log(x + 1);
+        return Math.log10(x + 1);
     }
 }

@@ -24,13 +24,13 @@ class TabulationServiceTest {
     }
     @Test
     public void tabulationServiceTest_3() {
-        var expected = 1.09861;
+        var expected = 0.47712;
         Assertions.assertEquals(expected, actual.get(300).getY(), epsilon);
     }
 
     @Test
     public void tabulationServiceTest_ResultWithMaxYValue() {
-        var expected = 1.09861;
+        var expected = 0.99999;
         Assertions.assertEquals(expected, TabulationService.getMax(actual).getY(), epsilon);
     }
 
@@ -45,7 +45,7 @@ class TabulationServiceTest {
         var service = new TabulationService(0.0, 2.0, 0.5);
         var tabulated = service.tabulate();
         var currentActual = TabulationService.getSum(tabulated);
-        var expected = 2.97468843;
+        var expected = 1.834848;
 
         Assertions.assertEquals(expected, currentActual, epsilon);
     }
@@ -55,7 +55,7 @@ class TabulationServiceTest {
         var service = new TabulationService(0.0, 2.0, 0.5);
         var tabulated = service.tabulate();
         var currentActual = TabulationService.getAvg(tabulated);
-        var expected = 0.594937686;
+        var expected = 0.366969;
 
         Assertions.assertEquals(expected, currentActual, epsilon);
     }

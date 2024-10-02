@@ -15,7 +15,7 @@ class CalculatorTest {
 
     @Test
     public void calculatorTest_1() {
-        var expected = 1.79176;
+        var expected = 0.77816;
         var actual = calculator.apply(5.0);
 
         Assertions.assertEquals(expected, actual, epsilon);
@@ -33,7 +33,7 @@ class CalculatorTest {
 
     @Test
     public void calculatorTest_3() {
-        var expected = 0.788457;
+        var expected = 0.34242;
         var actual = calculator.apply(1.20000001);
 
         Assertions.assertEquals(expected, actual, epsilon);

@@ -29,11 +29,11 @@ public class TabulationService {
     // 0.00196243 + 0.957825 + 0.916291 + 1.09861
 
     public static Result getMax(List<Result> results) {
-        return results.stream().sorted(Comparator.comparingDouble(Result::getX)).toList().getLast();
+        return results.stream().sorted(Comparator.comparingDouble(Result::getY)).toList().getLast();
     }
 
     public static Result getMin(List<Result> results) {
-        return results.stream().sorted(Comparator.comparingDouble(Result::getX)).toList().getFirst();
+        return results.stream().sorted(Comparator.comparingDouble(Result::getY)).toList().getFirst();
     }
 
     public static Double getSum(List<Result> results) {
